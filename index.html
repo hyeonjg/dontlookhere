@@ -7,17 +7,36 @@
     <title>don't look here</title>
 
     <style>
-    	body{margin:0;}
-    	#webcam{width: 100vw; height:100vh;}
+    	body,h1,h2,h3,h4,p{margin:0;}
+        h2{font-size: 4rem;}
+    	#webcam{width: 100vw; height:100vh; display: none;}
     	#output_canvas{position: absolute; height:100vh;
     		left: 50%; top: 0px; transform: translate(-50%, 0);
     		 }
+        #yellow{width:300px; height:300px; background: yellow;
+            position:absolute; left:50%; top:50px;
+            transform: translate(-50%, -50%);}
+        #frame1, #frame2, #frame3, #frame4{width:200px; height: 200px;
+            position: absolute;}
+        #frame1{left:0px; top:500px; background: green;}
+        #frame2{left:300px; top:500px; background: green;}
+        #frame3{left:600px; top:500px; background: green;}
+        #frame4{left:900px; top:500px; background: green;}
     </style>
 </head>
 <body>
 
     <video id="webcam" autoplay playsinline></video>
     <canvas class="output_canvas" id="output_canvas"></canvas>
+
+    <div id='yellow'></div>
+
+    <h2>고개를 돌리거나 눈을 가려보세요.</h2>
+
+    <div id='frame1'></div>
+    <div id='frame2'></div>
+    <div id='frame3'></div>
+    <div id='frame4'></div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" type="module" crossorigin="anonymous"></script>

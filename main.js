@@ -3,6 +3,9 @@ import { FilesetResolver, FaceLandmarker } from 'https://cdn.jsdelivr.net/npm/@m
 const video = document.getElementById('webcam');
 const canvas = document.getElementById('output_canvas');
 const faceDot = canvas.getContext('2d');
+const yellow = document.getElementById('yellow');
+let showing = false;
+let eyeCount = 0;
 
 //1. 웹캠 함수
 async function startWebcam() {
@@ -31,7 +34,6 @@ async function FaceTrackinggg() {
 
         // 얼굴 특징을 추적하는 함수 onResults()
         function onResults(RS) { 
-            console.log('추적 결과:', RS); 
 
             if (RS && RS.faceLandmarks) {
                 canvas.width = video.videoWidth;
@@ -43,6 +45,23 @@ async function FaceTrackinggg() {
                         const leftEye = landmarks[473]; // 왼쪽 눈
                         const rightEye = landmarks[468]; // 오른쪽 눈
 
+                        //인식 여부에 따른 행동
+                        const xx = leftEye.x - rightEye.x;
+                        //console.log(xx);
+                        if(xx<0.06){
+                            yellow.style.display = "block";
+                            if(!showing){
+                                eyeCount += 1;
+                                console.log("eyeCount= ", eyeCount);
+                                showing = true;
+                            }
+                        }
+                        else{
+                            yellow.style.display = "none";
+                            showing = false;
+                        }
+
+                        /** 눈 표시하는 코드
                         faceDot.beginPath();
                         faceDot.arc(leftEye.x* canvas.width, leftEye.y* canvas.height, 5, 0, 2 * Math.PI); // 왼쪽 눈
                         faceDot.fillStyle = "red";
@@ -52,8 +71,15 @@ async function FaceTrackinggg() {
                         faceDot.arc(rightEye.x* canvas.width, rightEye.y* canvas.height, 5, 0, 2 * Math.PI); // 오른쪽 눈
                         faceDot.fillStyle = "blue";
                         faceDot.fill();
+                        */
                     }} else {
-                    console.log('얼굴 없음!');
+                        //console.log('얼굴 없음!');
+                        yellow.style.display = "block";
+                        if(!showing){
+                                eyeCount += 1;
+                                console.log("eyeCount= ", eyeCount);
+                                showing = true;
+                            }
                 }
             } else {
                 console.error('Results object is missing faceLandmarks:', RS);
@@ -84,6 +110,9 @@ async function FaceTrackinggg() {
 }
 
 
+
+
 startWebcam();
 FaceTrackinggg();
+
 
