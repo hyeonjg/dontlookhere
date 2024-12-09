@@ -123,6 +123,11 @@ async function FaceTrackinggg() {
 
 function wall(){
     if(eyeCount > 5){
+        girl.src = "./source/frame/f-girl-3.png";
+        vase.src = "./source/frame/f-vase-3.png";
+        btf.src = "./source/frame/f-btf-3.png";
+        forest.src = "./source/frame/f-forest-3.png";
+
         document.body.style.background
         = "red";
                                 }
