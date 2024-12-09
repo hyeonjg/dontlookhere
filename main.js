@@ -127,10 +127,10 @@ function wall(){
         = "red";
                                 }
     else if(eyeCount > 2){
-        girl.src = "/source/frame/f-girl-2.png";
-        vase.src = "/source/frame/f-vase-2.png";
-        btf.src = "/source/frame/f-btf-2.png";
-        forest.src = "/source/frame/f-forest-2.png";
+        girl.src = "./source/frame/f-girl-2.png";
+        vase.src = "./source/frame/f-vase-2.png";
+        btf.src = "./source/frame/f-btf-2.png";
+        forest.src = "./source/frame/f-forest-2.png";
 
         document.body.style.background
         = "black";
