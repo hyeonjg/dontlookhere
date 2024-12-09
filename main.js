@@ -3,9 +3,15 @@ import { FilesetResolver, FaceLandmarker } from 'https://cdn.jsdelivr.net/npm/@m
 const video = document.getElementById('webcam');
 const canvas = document.getElementById('output_canvas');
 const faceDot = canvas.getContext('2d');
-const yellow = document.getElementById('yellow');
+const nofaceAlert = document.getElementById('noface-alert');
 let showing = false;
 let eyeCount = 0;
+const count = document.getElementById('count');
+
+const girl = document.getElementById('pic1');
+const vase = document.getElementById('pic2');
+const btf = document.getElementById('pic3');
+const forest = document.getElementById('pic4');
 
 //1. 웹캠 함수
 async function startWebcam() {
@@ -41,6 +47,8 @@ async function FaceTrackinggg() {
                 faceDot.clearRect(0, 0, canvas.width, canvas.height);
 
                 if (RS.faceLandmarks.length > 0) {
+                    nofaceAlert.style.display = "none";
+
                     for (const landmarks of RS.faceLandmarks) {
                         const leftEye = landmarks[473]; // 왼쪽 눈
                         const rightEye = landmarks[468]; // 오른쪽 눈
@@ -49,16 +57,18 @@ async function FaceTrackinggg() {
                         const xx = leftEye.x - rightEye.x;
                         //console.log(xx);
                         if(xx<0.06){
-                            yellow.style.display = "block";
+                            //nofaceAlert.style.display = "block";
                             if(!showing){
                                 eyeCount += 1;
                                 console.log("eyeCount= ", eyeCount);
+                                count.innerHTML = eyeCount;
                                 showing = true;
+                                wall();
                             }
                         }
                         else{
-                            yellow.style.display = "none";
-                            showing = false;
+                            //nofaceAlert.style.display = "none";
+                            showing = false; 
                         }
 
                         /** 눈 표시하는 코드
@@ -74,11 +84,13 @@ async function FaceTrackinggg() {
                         */
                     }} else {
                         //console.log('얼굴 없음!');
-                        yellow.style.display = "block";
+                        //nofaceAlert.style.display = "block";
                         if(!showing){
                                 eyeCount += 1;
                                 console.log("eyeCount= ", eyeCount);
+                                count.innerHTML = eyeCount;
                                 showing = true;
+                                wall();
                             }
                 }
             } else {
@@ -106,6 +118,22 @@ async function FaceTrackinggg() {
         console.log("FaceLandmarker 작동중");
     } catch (error) {
         console.error("FaceLandmarker 작동실패: ", error);
+    }
+}
+
+function wall(){
+    if(eyeCount > 5){
+        document.body.style.background
+        = "red";
+                                }
+    else if(eyeCount > 2){
+        girl.src = "/source/frame/f-girl-2.png";
+        vase.src = "/source/frame/f-vase-2.png";
+        btf.src = "/source/frame/f-btf-2.png";
+        forest.src = "/source/frame/f-forest-2.png";
+
+        document.body.style.background
+        = "black";
     }
 }
 

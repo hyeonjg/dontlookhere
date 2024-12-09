@@ -7,21 +7,45 @@
     <title>don't look here</title>
 
     <style>
+
+        @font-face {
+    font-family: 'BookkMyungjo-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+        @font-face {
+    font-family: 'DOSMyungjo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSMyungjo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
     	body,h1,h2,h3,h4,p{margin:0;}
-        h2{font-size: 4rem;}
+        html{font-family: 'DOSMyungjo';}
+        body{background-image: url('source/pattern1.png');
+            background-size: 100px 100px;
+            overflow: hidden;}
+        h2{font-size: 2rem; padding: 10px; line-height: 50px;}
+        h3{font-size: 1rem; padding: 5px;}
+        .Hstyle1{color: white; background: black; display: inline;}
+        .Hstyle2{}
+        .Hstyle3{}
+
     	#webcam{width: 100vw; height:100vh; display: none;}
     	#output_canvas{position: absolute; height:100vh;
     		left: 50%; top: 0px; transform: translate(-50%, 0);
     		 }
-        #yellow{width:300px; height:300px; background: yellow;
-            position:absolute; left:50%; top:50px;
-            transform: translate(-50%, -50%);}
-        #frame1, #frame2, #frame3, #frame4{width:200px; height: 200px;
+        #noface-alert{width:300px; height:300px; background: yellow;
+            position:absolute; left:50%; top:50px;}
+        img{width:350px; height: 350px;
             position: absolute;}
-        #frame1{left:0px; top:500px; background: green;}
-        #frame2{left:300px; top:500px; background: green;}
-        #frame3{left:600px; top:500px; background: green;}
-        #frame4{left:900px; top:500px; background: green;}
+        #pic1{left:100px; top:50px; width: 450px; height:450px;}
+        #pic2{left:750px; top:480px; }
+        #pic3{left:1100px; top:350px; }
+        #pic4{left:850px; top:250px; width: 250px; height:250px;}
+        #ghost{width: 700px; height: auto; left:200px; display: none;}
     </style>
 </head>
 <body>
@@ -29,14 +53,18 @@
     <video id="webcam" autoplay playsinline></video>
     <canvas class="output_canvas" id="output_canvas"></canvas>
 
-    <div id='yellow'></div>
+    <div id='noface-alert'>얼굴인식에 실패했습니다. 잠시 후 새로고침해주세요.</div>
 
-    <h2>고개를 돌리거나 눈을 가려보세요.</h2>
+    <h2 class='Hstyle1'>여기를 보지 마세요.</h2>
+    <h3 class='Hstyle1'>TIP: 고개를 돌리거나 눈을 가려보세요.</h3>
+    <h2 id='count'></h2>
 
-    <div id='frame1'></div>
-    <div id='frame2'></div>
-    <div id='frame3'></div>
-    <div id='frame4'></div>
+    <img id='pic1' src='/source/frame/f-girl-1.png'/>
+    <img id='pic2' src='/source/frame/f-vase-1.png'/>
+    <img id='pic3' src='/source/frame/f-btf-1.png'/>
+    <img id='pic4' src='/source/frame/f-forest-1.png'/>
+
+    <img id='ghost' src='/source/ghost.png'/>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" type="module" crossorigin="anonymous"></script>
