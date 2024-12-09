@@ -13,6 +13,10 @@ const vase = document.getElementById('pic2');
 const btf = document.getElementById('pic3');
 const forest = document.getElementById('pic4');
 
+let gramophone_on = false;
+const music = document.getElementById('music');
+const bgm = document.getElementById('bgm');
+
 //1. 웹캠 함수
 async function startWebcam() {
     try {
@@ -121,6 +125,7 @@ async function FaceTrackinggg() {
     }
 }
 
+
 function wall(){
     if(eyeCount > 5){
         girl.src = "./source/frame/f-girl-3.png";
@@ -142,8 +147,21 @@ function wall(){
     }
 }
 
+function musicON(){
+        if(gramophone_on == false){
+            bgm.play();
+            gramophone_on = true;
+        }
+        else{
+            bgm.pause();
+            gramophone_on = false;
+        }
+};
 
 
+music.onclick = function(){
+    musicON();
+};
 
 startWebcam();
 FaceTrackinggg();

@@ -46,6 +46,9 @@
         #pic3{left:1100px; top:350px; }
         #pic4{left:850px; top:250px; width: 250px; height:250px;}
         #ghost{width: 700px; height: auto; left:200px; display: none;}
+        #gramophone{left: 150px; top: 500px;}
+        label{cursor: pointer;}
+        button{display: none;}
     </style>
 </head>
 <body>
@@ -64,7 +67,12 @@
     <img id='pic3' src='./source/frame/f-btf-1.png'/>
     <img id='pic4' src='./source/frame/f-forest-1.png'/>
 
-    <img id='ghost' src='/source/ghost.png'/>
+    
+    <audio id='bgm' src='./source/theHouse_cut.wav'></audio>
+    <button type='button' id='music'></button>
+    <label for='music'>
+        <img id='gramophone' src='./source/music.png'/>
+    </label>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.js" type="module" crossorigin="anonymous"></script>
