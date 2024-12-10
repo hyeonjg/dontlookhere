@@ -39,13 +39,18 @@
     		 }
         #noface-alert{width:300px; height:300px; background: yellow;
             position:absolute; left:50%; top:50px;}
-        img{width:350px; height: 350px;
+        img{width:350px; height: auto;
             position: absolute;}
         #pic1{left:100px; top:50px; width: 450px; height:450px;}
         #pic2{left:750px; top:480px; }
         #pic3{left:1100px; top:350px; }
         #pic4{left:850px; top:250px; width: 250px; height:250px;}
+
         #ghost{width: 700px; height: auto; left:200px; display: none;}
+        #eye{width:150px; height:auto; left: 250px; top: 150px; display: none;}
+        #black{width: 100vw; z-index: 10; top:0px; display: none;}
+        .moth{width: 200px; }
+
         #gramophone{left: 150px; top: 500px;}
         label{cursor: pointer;}
         button{display: none;}
@@ -66,6 +71,11 @@
     <img id='pic2' src='./source/frame/f-vase-1.png'/>
     <img id='pic3' src='./source/frame/f-btf-1.png'/>
     <img id='pic4' src='./source/frame/f-forest-1.png'/>
+
+    <img id='eye' src='./source/obj/eye.png'/>
+    <img id='black' src='./source/obj/black.png'/>
+    <img id='ghost' src='./source/obj/ghost.png'/>
+    
 
     
     <audio id='bgm' src='./source/theHouse_cut.mp3'></audio>

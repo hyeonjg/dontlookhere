@@ -13,9 +13,14 @@ const vase = document.getElementById('pic2');
 const btf = document.getElementById('pic3');
 const forest = document.getElementById('pic4');
 
+const ghost = document.getElementById('ghost');
+const eye = document.getElementById('eye');
+const black = document.getElementById('black');
+
 let gramophone_on = false;
 const music = document.getElementById('music');
 const bgm = document.getElementById('bgm');
+let mothList = ['./source/obj/moth1.png', './source/obj/moth2.png', './source/obj/moth3.png']
 
 //1. 웹캠 함수
 async function startWebcam() {
@@ -127,23 +132,41 @@ async function FaceTrackinggg() {
 
 
 function wall(){
-    if(eyeCount > 5){
+    //3단계 변화
+    if(eyeCount > 3){
+        black.style.display = "none";
+        eye.style.display = 'inline-block';
+        document.body.style.backgroundImage
+        = "url('source/pattern1.png')";
+        document.body.style.backgroundSize 
+        = "100px 100px";
+        mothGo();
+    }
+
+    //2단계 변화
+    else if(eyeCount > 2){
         girl.src = "./source/frame/f-girl-3.png";
         vase.src = "./source/frame/f-vase-3.png";
         btf.src = "./source/frame/f-btf-3.png";
         forest.src = "./source/frame/f-forest-3.png";
 
+        ghost.style.display = 'none';
+        black.style.display = 'inline-block';
         document.body.style.background
         = "red";
-                                }
-    else if(eyeCount > 2){
+    }
+
+    //1단계 변화    
+    else if(eyeCount > 1){
         girl.src = "./source/frame/f-girl-2.png";
         vase.src = "./source/frame/f-vase-2.png";
         btf.src = "./source/frame/f-btf-2.png";
         forest.src = "./source/frame/f-forest-2.png";
 
-        document.body.style.background
-        = "black";
+        ghost.style.display = 'inline-block';
+
+        //document.body.style.background
+        //= "black";
     }
 }
 
@@ -157,6 +180,17 @@ function musicON(){
             gramophone_on = false;
         }
 };
+
+funtion mothGo(){
+    for(i=0;i>10;i++){
+        const randomMoth = document.createElement('img');
+        randomMoth.src = mothList[randomIndex];
+        randomMoth.class = 'moth';
+        randomMoth.style.left = Math.random()*window.innerWidth;
+        randomMoth.style.top = Math.random()*window.innerHeight;
+        document.body.appendChild(randomMoth);
+    }
+}
 
 
 music.onclick = function(){
