@@ -137,7 +137,7 @@ function wall(){
         black.style.display = "none";
         eye.style.display = 'inline-block';
         document.body.style.backgroundImage
-        = "url('source/pattern1.png')";
+        = "url('source/pattern2.jpg')";
         document.body.style.backgroundSize 
         = "100px 100px";
         mothGo();
@@ -182,13 +182,13 @@ function musicON(){
 };
 
 function mothGo(){
-    for(let i=0;i<10;i++){
+    for(let i=0;i<20;i++){
         const randomMoth = document.createElement('img');
         const randomIndex = Math.floor(Math.random() * mothList.length);
         randomMoth.src = mothList[randomIndex];
         randomMoth.classList.add('moth');
-        randomMoth.style.left = Math.random()*window.innerWidth + "px";
-        randomMoth.style.top = Math.random()*window.innerHeight + "px";
+        randomMoth.style.left = Math.random()*(window.innerWidth-300) + "px";
+        randomMoth.style.top = Math.random()*(window.innerHeight-100) + "px";
         document.body.appendChild(randomMoth);
     }
 }
