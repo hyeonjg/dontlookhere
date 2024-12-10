@@ -181,13 +181,14 @@ function musicON(){
         }
 };
 
-funtion mothGo(){
-    for(i=0;i>10;i++){
+function mothGo(){
+    for(let i=0;i<10;i++){
         const randomMoth = document.createElement('img');
+        const randomIndex = Math.floor(Math.random() * mothList.length);
         randomMoth.src = mothList[randomIndex];
-        randomMoth.class = 'moth';
-        randomMoth.style.left = Math.random()*window.innerWidth;
-        randomMoth.style.top = Math.random()*window.innerHeight;
+        randomMoth.classList.add('moth');
+        randomMoth.style.left = Math.random()*window.innerWidth + "px";
+        randomMoth.style.top = Math.random()*window.innerHeight + "px";
         document.body.appendChild(randomMoth);
     }
 }
