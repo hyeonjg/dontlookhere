@@ -132,15 +132,35 @@ async function FaceTrackinggg() {
 
 
 function wall(){
+    //4단계 변화
+    if(eyeCount > 4){
+        girl.src = "./source/frame/f-girl-1.png";
+        vase.src = "./source/frame/f-girl-1.png";
+        btf.src = "./source/frame/f-girl-1.png";
+        forest.src = "./source/frame/f-girl-1.png";
+        document.body.style.backgroundImage
+        = "url('source/pattern1.png')";
+        document.body.style.backgroundSize 
+        = "100px 100px";
+        eye.style.display = 'none';
+        let mothRMV = document.querySelectorAll('.moth');
+        mothRMV.forEach(moth => moth.remove()); 
+
+    }
+
     //3단계 변화
-    if(eyeCount > 3){
+    else if(eyeCount > 3){
         black.style.display = "none";
         eye.style.display = 'inline-block';
         document.body.style.backgroundImage
         = "url('source/pattern2.jpg')";
         document.body.style.backgroundSize 
         = "100px 100px";
-        mothGo();
+        for(let i=0; i < 30; i++){
+            setTimeout(()=>{
+                mothGo();
+            }, i*50)
+        }
     }
 
     //2단계 변화
@@ -182,15 +202,13 @@ function musicON(){
 };
 
 function mothGo(){
-    for(let i=0;i<20;i++){
-        const randomMoth = document.createElement('img');
-        const randomIndex = Math.floor(Math.random() * mothList.length);
-        randomMoth.src = mothList[randomIndex];
-        randomMoth.classList.add('moth');
-        randomMoth.style.left = Math.random()*(window.innerWidth-300) + "px";
-        randomMoth.style.top = Math.random()*(window.innerHeight-100) + "px";
-        document.body.appendChild(randomMoth);
-    }
+    const randomMoth = document.createElement('img');
+    const randomIndex = Math.floor(Math.random() * mothList.length);
+    randomMoth.src = mothList[randomIndex];
+    randomMoth.classList.add('moth');
+    randomMoth.style.left = Math.random()*(window.innerWidth-300) + "px";
+    randomMoth.style.top = Math.random()*(window.innerHeight-100) + "px";
+    document.body.appendChild(randomMoth);
 }
 
 
