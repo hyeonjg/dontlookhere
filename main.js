@@ -146,6 +146,11 @@ function wall(){
         let mothRMV = document.querySelectorAll('.moth');
         mothRMV.forEach(moth => moth.remove()); 
 
+        girl1.style.display = 'inline-block';
+        girl2.style.display = 'inline-block';
+        girl3.style.display = 'inline-block';
+        girl4.style.display = 'inline-block';
+
     }
 
     //3단계 변화

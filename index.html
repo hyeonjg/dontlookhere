@@ -39,14 +39,22 @@
     	#output_canvas{position: absolute; height:100vh;
     		left: 50%; top: 0px; transform: translate(-50%, 0);
     		 }
-        #noface-alert{width:300px; height:300px; background: yellow;
-            position:absolute; left:50%; top:50px;}
+        #noface-alert{width:300px; height:100px; 
+            background: blue; color: white;
+            position:absolute; left:50%; top:50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;}
         img{width:350px; height: auto;
             position: absolute;}
         #pic1{left:100px; top:50px; width: 450px; height:450px;}
         #pic2{left:750px; top:480px; }
         #pic3{left:1100px; top:350px; }
         #pic4{left:850px; top:250px; width: 250px; height:250px;}
+
+        #girl1{left:420px; top:470px; width: 300px; display: none;}
+        #girl2{left:650px; top:270px; width:200px; display: none;}
+        #girl3{left:600px; top:-250px; width: 500px; display: none;}
+        #girl4{left:1075px; top:50px; width: 300px; display: none;}
 
         #ghost{width: 700px; height: auto; left:200px; display: none;}
         #eye{width:150px; height:auto; left: 250px; top: 150px; display: none;}
@@ -77,6 +85,11 @@
     <img id='eye' src='./source/obj/eye.png'/>
     <img id='black' src='./source/obj/black.png'/>
     <img id='ghost' src='./source/obj/ghost.png'/>
+
+    <img id='girl1' src='./source/frame/f-girl-1.png'/>
+    <img id='girl2' src='./source/frame/f-girl-long.png'/>
+    <img id='girl3' src='./source/frame/f-girl-long.png'/>
+    <img id='girl4' src='./source/frame/f-girl-long.png'/>
     
 
     
